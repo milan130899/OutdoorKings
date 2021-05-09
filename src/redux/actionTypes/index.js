@@ -1,0 +1,9 @@
+export const EMAIL_ERROR = 'EMAIL_ERROR';
+export const PASSWORD_ERROR = 'PASSWORD_ERROR';
+export const CATEGORY_ID = 'category_id';
+export const AREA_ID = 'area_id';
+export const PACKAGE_ID = 'package_id';
+export const TOKEN = 'user_token';
+export const USER_DETAILS = 'user_detail';
+export const VIEW_ORDER = 'view_order';
+export const VIEW_PROFILE = 'view_profile';
