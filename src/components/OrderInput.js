@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     width: '100%',
-    width: windowWidth / 1.18,
+    width: windowWidth / 1.07,
     height: windowHeight / 17,
     borderColor: '#ccc',
     borderRadius: 8,

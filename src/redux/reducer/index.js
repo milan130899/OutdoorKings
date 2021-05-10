@@ -13,16 +13,19 @@ import profileReducer from './profileReducer';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['login_token', 'data', 'orderData'],
 };
 
 const allReducers = combineReducers({
   errorReducer: errorReducer,
   orderReducer: orderReducer,
-  tokenReducer: persistReducer(persistConfig, tokenReducer),
-  userDetails: persistReducer(persistConfig, userDetailsReducer),
-  viewOrder: persistReducer(persistConfig, viewOrderReducer),
+  tokenReducer: tokenReducer,
+  userDetails: userDetailsReducer,
+  viewOrder: viewOrderReducer,
   prfile: profileReducer,
 });
-export const store = createStore(allReducers, applyMiddleware(thunk));
-export const persistor = persistStore(store);
+const persistedReducer = persistReducer(persistConfig, allReducers);
+
+const store = createStore(persistedReducer, applyMiddleware(thunk));
+const persistor = persistStore(store);
+
+export {store, persistor};

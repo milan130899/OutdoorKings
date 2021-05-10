@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   itemDescription: {
     marginBottom: 5,
-    paddingHorizontal: 15,
+    paddingHorizontal: 1,
     fontFamily: Fonts.PlayfairDisplayRegular,
     fontSize: 13.5,
   },

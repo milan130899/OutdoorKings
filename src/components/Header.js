@@ -1,10 +1,19 @@
 import * as React from 'react';
-import {Button, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  Button,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import {windowHeight, windowWidth} from '../utils/Dimentions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {Icon} from 'react-native-elements';
 import Fonts from '../common/Fonts';
 import FormButton from './FormButton';
+
 const Header = ({
   headerTitle,
   logoutIcon,
@@ -16,12 +25,12 @@ const Header = ({
   return (
     <View style={styles.container}>
       <View>
-        <Ionicons
-          style={styles.iconStyle}
-          name={iconType}
-          size={39}
-          {...rest}
-        />
+        <TouchableOpacity {...rest}>
+          <Image
+            source={require('../images/Menu.png')}
+            style={styles.iconStyle}
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.titleContainer}>
         <Text style={styles.headerTitleStyle}>{headerTitle}</Text>
@@ -40,30 +49,34 @@ const Header = ({
 const styles = StyleSheet.create({
   headerTitleStyle: {
     fontFamily: Fonts.MomcakeBold,
-    fontSize: 35,
+    fontSize: 28,
   },
   passIcon: {
     height: windowHeight / 22,
     width: windowWidth / 7.5,
-    marginLeft: 10,
-  },
-  iconStyle: {
-    height: windowHeight / 18,
-    width: windowWidth / 7.9,
     marginLeft: 5,
   },
+  iconStyle: {
+    height: windowHeight / 25,
+    width: windowWidth / 13,
+    marginLeft: 8,
+  },
   container: {
-    backgroundColor: '#999',
-    height: windowHeight / 17,
+    backgroundColor: '#F9F9F9',
+    height: windowHeight / 14,
+    width: windowWidth / 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    borderBottomColor: '#999',
+    borderBottomWidth: 1.4,
   },
   titleContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: windowWidth / 1.36,
+    width: windowWidth / 1.25,
     height: windowHeight / 17,
+    //backgroundColor: '#000',
   },
 });
 export default Header;

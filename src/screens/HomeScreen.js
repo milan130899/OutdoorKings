@@ -204,8 +204,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   teamAvtar: {
-    width: windowWidth / 1.6,
-    height: windowHeight / 5,
+    width: windowWidth / 1.3,
+    height: windowHeight / 4.5,
     borderRadius: 20,
   },
   teamInside: {

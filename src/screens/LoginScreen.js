@@ -111,7 +111,7 @@ const LoginScreen = ({navigation}) => {
               source={require('../images/applogo.png')}
               style={styles.logo}
             />
-            <Text style={styles.proceedText}>Proceed with your login</Text>
+            <Text style={styles.proceedText}>Sign In</Text>
 
             <FormInput
               inputVisible={true}
