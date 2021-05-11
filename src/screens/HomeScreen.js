@@ -76,7 +76,7 @@ const HomeScreen = ({navigation}) => {
           headerTitle="Home"
           iconType="menu"
           onPress={() => navigation.openDrawer()}
-          logoutIcon="sign-out"
+          logoutIcon="logout"
           onlogOutPress={logout}
         />
       </View>
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   },
   teamHeader: {
     fontFamily: Fonts.Backslash,
-    fontSize: 25,
+    fontSize: 21,
     marginTop: 10,
   },
   teamNames: {
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
   },
   serviceHeader: {
     fontFamily: Fonts.Backslash,
-    fontSize: 25,
+    fontSize: 21,
   },
   serviceRowContainer: {
     height: windowHeight / 4,

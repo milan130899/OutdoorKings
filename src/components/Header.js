@@ -10,11 +10,11 @@ import {
 import {windowHeight, windowWidth} from '../utils/Dimentions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {Icon} from 'react-native-elements';
+import {Icon, Header} from 'react-native-elements';
 import Fonts from '../common/Fonts';
 import FormButton from './FormButton';
 
-const Header = ({
+const Headers = ({
   headerTitle,
   logoutIcon,
   iconType,
@@ -22,28 +22,62 @@ const Header = ({
   onlogOutPress,
   ...rest
 }) => {
-  return (
-    <View style={styles.container}>
-      <View>
-        <TouchableOpacity {...rest}>
-          <Image
-            source={require('../images/Menu.png')}
-            style={styles.iconStyle}
-          />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.titleContainer}>
-        <Text style={styles.headerTitleStyle}>{headerTitle}</Text>
-      </View>
-      <View>
-        <FontAwesome
-          style={styles.passIcon}
-          name={logoutIcon}
-          size={33}
-          onPress={onlogOutPress}
+  const RightIcon = () => {
+    return (
+      <TouchableOpacity {...rest}>
+        <Image
+          source={require('../images/Menu.png')}
+          style={styles.iconStyle}
         />
-      </View>
-    </View>
+      </TouchableOpacity>
+    );
+  };
+  const LeftIcon = () => {
+    return (
+      <Icon
+        style={styles.passIcon}
+        name={logoutIcon}
+        size={26}
+        onPress={onlogOutPress}
+        color="#FFF"
+      />
+    );
+  };
+  return (
+    // <View style={styles.container}>
+    //   <View>
+    //     <TouchableOpacity {...rest}>
+    //       <Image
+    //         source={require('../images/Menu.png')}
+    //         style={styles.iconStyle}
+    //       />
+    //     </TouchableOpacity>
+    //   </View>
+    //   <View style={styles.titleContainer}>
+    //     <Text style={styles.headerTitleStyle}>{headerTitle}</Text>
+    //   </View>
+    //   <View>
+    //     <FontAwesome
+    //       style={styles.passIcon}
+    //       name={logoutIcon}
+    //       size={33}
+    //       onPress={onlogOutPress}
+    //     />
+    //   </View>
+    // </View>
+    <Header
+      leftComponent={<RightIcon />}
+      centerComponent={{
+        text: headerTitle,
+        style: {
+          color: '#fff',
+          fontSize: 24,
+          fontFamily: Fonts.MomcakeBold,
+          marginTop: 5,
+        },
+      }}
+      rightComponent={<LeftIcon />}
+    />
   );
 };
 const styles = StyleSheet.create({
@@ -57,9 +91,10 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   iconStyle: {
-    height: windowHeight / 25,
-    width: windowWidth / 13,
-    marginLeft: 8,
+    height: windowHeight / 35,
+    width: windowWidth / 15,
+    marginLeft: 5,
+    marginTop: 3,
   },
   container: {
     backgroundColor: '#F9F9F9',
@@ -68,8 +103,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    borderBottomColor: '#999',
-    borderBottomWidth: 1.4,
   },
   titleContainer: {
     alignItems: 'center',
@@ -79,4 +112,4 @@ const styles = StyleSheet.create({
     //backgroundColor: '#000',
   },
 });
-export default Header;
+export default Headers;
