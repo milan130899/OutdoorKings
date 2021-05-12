@@ -180,8 +180,7 @@ const HomeScreen = ({navigation}) => {
             style={{
               textAlign: 'center',
               marginVertical: 20,
-              fontSize: 18,
-              fontFamily: Fonts.MomcakeBold,
+              fontSize: 15,
             }}>
             2021 Outdoor Kings. © All copyRights reserved
           </Text>
@@ -225,13 +224,12 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   teamHeader: {
-    fontFamily: Fonts.Backslash,
+    fontWeight: 'bold',
     fontSize: 21,
     marginTop: 10,
   },
   teamNames: {
-    fontFamily: Fonts.MomcakeBold,
-    fontSize: 20,
+    fontSize: 15,
     marginVertical: 5,
   },
   serviceContainer: {
@@ -240,8 +238,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   serviceHeader: {
-    fontFamily: Fonts.Backslash,
     fontSize: 21,
+    fontWeight: 'bold',
   },
   serviceRowContainer: {
     height: windowHeight / 4,

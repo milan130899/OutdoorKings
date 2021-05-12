@@ -220,7 +220,6 @@ const styles = StyleSheet.create({
   itemDescription: {
     marginBottom: 12,
     marginLeft: 13,
-    fontFamily: Fonts.PlayfairDisplayRegular,
     fontSize: 13.5,
     fontWeight: 'bold',
   },
@@ -236,16 +235,15 @@ const styles = StyleSheet.create({
   buttonStyle: {
     backgroundColor: 'green',
     marginTop: 5,
-    width: windowWidth / 4.5,
+    width: windowWidth / 1.17,
     height: windowHeight / 20,
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 7,
+    borderRadius: 20,
   },
   buttonText: {
     color: '#FFF',
-    fontFamily: Fonts.Backslash,
     fontSize: 15,
   },
 });

@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
   },
 
   feedbackText: {
-    fontFamily: Fonts.Backslash,
     fontSize: 30,
     marginTop: 10,
     marginBottom: 15,

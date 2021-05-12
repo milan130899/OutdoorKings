@@ -178,8 +178,8 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 70,
-    fontFamily: Fonts.Backslash,
-    fontSize: 25,
+    fontWeight: '800',
+    fontSize: 28,
     marginVertical: 15,
     color: '#051d5f',
   },

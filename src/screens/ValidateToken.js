@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignSelf: 'center',
-    marginTop: 10,
+    marginTop: 20,
   },
 });
 export default ValidateToken;

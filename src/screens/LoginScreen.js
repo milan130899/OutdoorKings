@@ -117,7 +117,7 @@ const LoginScreen = ({navigation}) => {
               inputVisible={true}
               labelValue={email}
               onChangeText={(userEmail) => setEmail(userEmail)}
-              placeholderText="email@address.com"
+              placeholderText="Email"
               iconType="user"
               autoCapitalize="none"
               autoCorrect={false}
@@ -129,7 +129,7 @@ const LoginScreen = ({navigation}) => {
               inputVisible={true}
               labelValue={password}
               onChangeText={(userPassword) => setPassword(userPassword)}
-              placeholderText="password"
+              placeholderText="Password"
               iconType="lock"
               autoCapitalize="none"
               autoCorrect={false}
@@ -138,6 +138,20 @@ const LoginScreen = ({navigation}) => {
             {passError ? (
               <Text style={styles.errorText}>{passError}</Text>
             ) : null}
+            <View style={styles.forgotLine}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('ForgotPass');
+                }}>
+                <Text
+                  style={{
+                    ...styles.navButtonText,
+                    color: 'gray',
+                  }}>
+                  Forgot Password?
+                </Text>
+              </TouchableOpacity>
+            </View>
             <View style={styles.formButton}>
               <FormButton buttonTitle="Submit" onPress={() => checking()} />
             </View>
@@ -151,24 +165,8 @@ const LoginScreen = ({navigation}) => {
                   style={{
                     ...styles.navButtonText,
                     color: '#2e64e5',
-                    textDecorationLine: 'underline',
                   }}>
                   Create here
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View style={{...styles.accountLine}}>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('ForgotPass');
-                }}>
-                <Text
-                  style={{
-                    ...styles.navButtonText,
-                    color: '#2e64e5',
-                    textDecorationLine: 'underline',
-                  }}>
-                  Forgot Password?
                 </Text>
               </TouchableOpacity>
             </View>
@@ -187,7 +185,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     //backgroundColor: '#FFF',
-    padding: 30,
+    padding: 20,
     width: windowWidth / 1,
     height: windowHeight / 1,
   },
@@ -199,14 +197,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     position: 'relative',
   },
-  // loginText: {
-  //   fontFamily: Fonts.Backslash,
-  //   fontSize: 40,
-  //   marginBottom: 15,
-  //   color: '#051d5f',
-  // },
   proceedText: {
-    fontFamily: Fonts.Backslash,
     fontSize: 25,
     marginTop: 45,
     marginBottom: 15,
@@ -217,21 +208,20 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     marginRight: 10,
   },
+  forgotLine: {
+    alignSelf: 'flex-end',
+  },
   formButton: {
     alignSelf: 'center',
-    marginVertical: 10,
+    marginVertical: 50,
   },
   accountLine: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 10,
+    marginTop: 70,
   },
   navButtonText: {
-    fontSize: 17,
-    fontWeight: '500',
-    color: '#051d5f',
-    fontFamily: Fonts.PlayfairDisplayRegular,
+    fontSize: 13,
+    color: 'gray',
   },
 });
 export default LoginScreen;

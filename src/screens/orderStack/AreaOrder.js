@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   areaTitle: {
-    fontFamily: Fonts.ChickenPie,
     fontSize: 20,
   },
   divider: {
@@ -104,7 +103,6 @@ const styles = StyleSheet.create({
   areaPin: {
     marginBottom: 10,
     paddingHorizontal: 10,
-    fontFamily: Fonts.PlayfairDisplayRegular,
     fontSize: 15,
     textAlign: 'center',
     fontWeight: 'bold',

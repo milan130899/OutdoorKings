@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   itemTitle: {
-    fontFamily: Fonts.ChickenPie,
     fontSize: 20,
   },
   itemImage: {
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
   itemDescription: {
     marginBottom: 5,
     paddingHorizontal: 1,
-    fontFamily: Fonts.PlayfairDisplayRegular,
+
     fontSize: 13.5,
   },
   buttonContainer: {

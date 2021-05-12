@@ -140,13 +140,12 @@ const styles = StyleSheet.create({
     height: windowHeight / 1,
   },
   forgotText: {
-    fontFamily: Fonts.Backslash,
     fontSize: 27,
     marginBottom: 15,
     color: '#000',
+    fontWeight: 'bold',
   },
   forgotUnderLine: {
-    fontFamily: Fonts.PlayfairDisplayRegular,
     fontSize: 15,
     marginHorizontal: 25,
     color: '#000',
@@ -164,6 +163,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignSelf: 'center',
+    marginVertical: 20,
   },
 
   goBackContainer: {
@@ -171,7 +171,6 @@ const styles = StyleSheet.create({
     margin: 18,
   },
   goBackText: {
-    fontFamily: Fonts.PlayfairDisplayRegular,
     fontSize: 17,
     marginHorizontal: 15,
     color: '#2e64e5',

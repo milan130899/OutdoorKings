@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
   },
 
   orderText: {
-    fontFamily: Fonts.Backslash,
     fontSize: 30,
     marginTop: 20,
     marginBottom: 15,
@@ -89,13 +88,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   orderThanksLine: {
-    fontFamily: Fonts.PlayfairDisplayRegular,
     fontSize: 23,
     textAlign: 'center',
     color: '#000',
   },
   orderContactLine: {
-    fontFamily: Fonts.PlayfairDisplayRegular,
     fontSize: 16,
     textAlign: 'center',
     paddingHorizontal: 23,

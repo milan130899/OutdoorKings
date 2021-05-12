@@ -250,10 +250,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   text: {
-    fontFamily: Fonts.Backslash,
-    fontSize: 25,
+    fontSize: 28,
     marginVertical: 15,
     color: '#051d5f',
+    fontWeight: '800',
   },
   fieldContainer: {
     width: windowWidth / 1.09,

@@ -24,13 +24,11 @@ const ResetCongrates = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     backgroundColor: '#FFF',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   textStyle: {
-    fontFamily: Fonts.Playfair,
     fontSize: 25,
     marginHorizontal: 53,
   },
@@ -43,7 +41,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontFamily: Fonts.Backslash,
     fontSize: 17,
   },
 });

@@ -88,14 +88,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   itemTitle: {
-    fontFamily: Fonts.ChickenPie,
     fontSize: 20,
   },
 
   packageDes: {
     marginBottom: 10,
     paddingHorizontal: 15,
-    fontFamily: Fonts.PlayfairDisplayRegular,
     fontSize: 15,
     textAlign: 'center',
     fontWeight: 'bold',

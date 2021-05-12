@@ -159,7 +159,6 @@ const styles = StyleSheet.create({
     height: windowHeight / 1,
   },
   headerText: {
-    fontFamily: Fonts.Backslash,
     fontSize: 25,
     marginBottom: 15,
     color: '#051d5f',

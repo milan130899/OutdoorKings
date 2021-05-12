@@ -197,7 +197,7 @@ const Registration = ({navigation}) => {
             {/*****************Radio Button*****************************8*/}
             <View style={styles.inputContainer}>
               <View style={styles.iconStyle}>
-                <Icon name="male" size={19} color="#666" />
+                <Icon name="male" size={17} color="#999" />
               </View>
 
               <RadioButton
@@ -218,7 +218,9 @@ const Registration = ({navigation}) => {
               <Text style={styles.radioButton}>Female</Text>
             </View>
             {/*****************Radio Button*****************************8*/}
-            <FormButton buttonTitle="Sign Up" onPress={checking} />
+            <View style={styles.formButton}>
+              <FormButton buttonTitle="Sign Up" onPress={checking} />
+            </View>
             <View style={styles.signInText}>
               <Text style={styles.navButtonText}>
                 Already have an account?{' '}
@@ -231,7 +233,6 @@ const Registration = ({navigation}) => {
                   style={{
                     ...styles.navButtonText,
                     color: '#2e64e5',
-                    textDecorationLine: 'underline',
                   }}>
                   Sing in here
                 </Text>
@@ -258,7 +259,6 @@ const styles = StyleSheet.create({
     height: windowHeight / 1,
   },
   registrationText: {
-    fontFamily: Fonts.Backslash,
     fontSize: 25,
     marginBottom: 30,
     color: '#051d5f',
@@ -269,17 +269,20 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   navButtonText: {
-    fontSize: 17,
-    color: '#051d5f',
-    fontFamily: Fonts.PlayfairDisplayRegular,
-    marginTop: 15,
+    fontSize: 13,
+    color: 'gray',
+    marginTop: 5,
   },
   signInText: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     width: windowWidth / 1,
-    marginTop: 5,
+    marginTop: 45,
+  },
+  formButton: {
+    alignSelf: 'center',
+    marginVertical: 35,
   },
   /********************Radio Styles*********************************** */
   inputContainer: {
@@ -287,25 +290,31 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: '100%',
     width: windowWidth / 1.07,
-    height: windowHeight / 17,
+    height: windowHeight / 16,
     borderColor: '#ccc',
-    borderRadius: 8,
+    borderRadius: 20,
     borderWidth: 1,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 5,
+      height: 10,
+    },
+    shadowOpacity: 10,
+    shadowRadius: 19,
   },
   iconStyle: {
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRightColor: '#ccc',
-    borderRightWidth: 1,
     width: windowWidth / 9,
   },
   radioButton: {
     flex: 1,
-    fontSize: 17,
+    fontSize: 15,
     fontFamily: 'Lato-Regular',
     color: '#666',
     justifyContent: 'center',

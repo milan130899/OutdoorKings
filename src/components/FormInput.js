@@ -58,7 +58,7 @@ const FormInput = ({
       {inputVisible ? (
         <View style={styles.inputContainer}>
           <View style={styles.iconStyle}>
-            <Icon name={iconType} size={19} color="#666" />
+            <Icon name={iconType} size={17} color="#999" />
           </View>
           <TextInput
             value={labelValue}
@@ -76,7 +76,7 @@ const FormInput = ({
         <View style={styles.inputContainer}>
           <View style={styles.iconStyle}>
             <TouchableOpacity onPress={showDatePicker}>
-              <Icon name="calendar" size={19} color="#666" />
+              <Icon name="calendar" size={17} color="#999" />
             </TouchableOpacity>
           </View>
           <DateTimePickerModal
@@ -97,7 +97,7 @@ const FormInput = ({
         <View style={styles.inputContainer}>
           <View style={styles.iconStyle}>
             <TouchableOpacity onPress={showDatePicker}>
-              <Icon name="calendar" size={19} color="#666" />
+              <Icon name="calendar" size={17} color="#999" />
             </TouchableOpacity>
           </View>
           <DateTimePickerModal
@@ -123,25 +123,31 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: '100%',
     width: windowWidth / 1.07,
-    height: windowHeight / 17,
+    height: windowHeight / 16,
     borderColor: '#ccc',
-    borderRadius: 8,
+    borderRadius: 20,
     borderWidth: 1,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
     //right: 8,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 5,
+      height: 10,
+    },
+    shadowOpacity: 10,
+    shadowRadius: 19,
   },
   iconStyle: {
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRightColor: '#ccc',
-    borderRightWidth: 1,
     width: windowWidth / 9,
   },
   dateOfBirth: {
-    fontSize: 17,
+    fontSize: 15,
     paddingLeft: 10,
     fontFamily: 'Lato-Regular',
     color: '#666',
@@ -150,7 +156,7 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     flex: 1,
-    fontSize: 17,
+    fontSize: 15,
     fontFamily: 'Lato-Regular',
     color: '#666',
     justifyContent: 'center',

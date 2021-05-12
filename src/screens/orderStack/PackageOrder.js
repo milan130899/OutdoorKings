@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   packageTitle: {
-    fontFamily: Fonts.ChickenPie,
     fontSize: 20,
   },
   divider: {
@@ -120,7 +119,6 @@ const styles = StyleSheet.create({
   packageDes: {
     marginBottom: 10,
     paddingHorizontal: 15,
-    fontFamily: Fonts.PlayfairDisplayRegular,
     fontSize: 15,
     textAlign: 'center',
     fontWeight: 'bold',

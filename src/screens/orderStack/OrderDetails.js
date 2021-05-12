@@ -11,6 +11,8 @@ import {
   Alert,
   ToastAndroid,
   KeyboardAvoidingView,
+  PermissionsAndroid,
+  Platform,
 } from 'react-native';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
@@ -135,6 +137,45 @@ const OrderDetails = ({navigation}) => {
   const [imageVisible, SetImageVisible] = useState(true);
   const [filePath, setFilePath] = useState({});
 
+  const requestCameraPermission = async () => {
+    if (Platform.OS === 'android') {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.CAMERA,
+          {
+            title: 'Camera Permission',
+            message: 'App needs camera permission',
+          },
+        );
+        // If CAMERA Permission is granted
+        return granted === PermissionsAndroid.RESULTS.GRANTED;
+      } catch (err) {
+        console.warn(err);
+        return false;
+      }
+    } else return true;
+  };
+
+  const requestExternalWritePermission = async () => {
+    if (Platform.OS === 'android') {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+          {
+            title: 'External Storage Write Permission',
+            message: 'App needs write permission',
+          },
+        );
+        // If WRITE_EXTERNAL_STORAGE Permission is granted
+        return granted === PermissionsAndroid.RESULTS.GRANTED;
+      } catch (err) {
+        console.warn(err);
+        alert('Write permission err', err);
+      }
+      return false;
+    } else return true;
+  };
+
   const captureImage = async (type) => {
     let options = {
       mediaType: type,
@@ -142,32 +183,36 @@ const OrderDetails = ({navigation}) => {
       maxHeight: 550,
       quality: 1,
       videoQuality: 'low',
-      durationLimit: 30,
+      durationLimit: 30, //Video max duration in seconds
       saveToPhotos: true,
     };
+    let isCameraPermitted = await requestCameraPermission();
+    let isStoragePermitted = await requestExternalWritePermission();
 
-    launchCamera(options, (response) => {
-      //console.log('Response = ', response);
-      if (response.didCancel) {
-        console.log('User cancelled camera picker');
-        return;
-      } else if (response.errorCode == 'camera_unavailable') {
-        alert('Camera not available on device');
-        return;
-      } else if (response.errorCode == 'permission') {
-        alert('Permission not satisfied');
-        return;
-      } else if (response.errorCode == 'others') {
-        alert(response.errorMessage);
-        return;
-      }
+    if (isCameraPermitted && isStoragePermitted) {
+      launchCamera(options, (response) => {
+        //console.log('Response = ', response);
 
-      setFilePath(response);
-      SetImageVisible(false);
-      setModalVisible(!modalVisible); // Hiding Modal After I got Image
-    });
+        if (response.didCancel) {
+          alert('User cancelled camera picker');
+          return;
+        } else if (response.errorCode == 'camera_unavailable') {
+          alert('Camera not available on device');
+          return;
+        } else if (response.errorCode == 'permission') {
+          alert('Permission not satisfied');
+          return;
+        } else if (response.errorCode == 'others') {
+          alert(response.errorMessage);
+          return;
+        }
+
+        setFilePath(response);
+        SetImageVisible(false);
+        setModalVisible(!modalVisible); // Hiding Modal After I got Image
+      });
+    }
   };
-
   const chooseFile = (type) => {
     let options = {
       mediaType: type,
@@ -381,11 +426,10 @@ const styles = StyleSheet.create({
   },
   nextBtnText: {
     color: '#1D9CE5',
-    fontFamily: Fonts.MomcakeBold,
+
     fontSize: 22,
   },
   detailsText: {
-    fontFamily: Fonts.Backslash,
     fontSize: 25,
     marginBottom: 10,
     color: '#000',
@@ -445,7 +489,7 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     fontSize: 25,
-    fontFamily: Fonts.romanus,
+    //fontFamily: Fonts.romanus,
     textAlign: 'center',
   },
   /*************Modal Style******************************************/
