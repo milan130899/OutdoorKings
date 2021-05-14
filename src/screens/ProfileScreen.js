@@ -14,6 +14,8 @@ import {
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {useNavigation, useIsFocused} from '@react-navigation/native';
 import {useSelector, useDispatch} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {persistor} from '../redux/reducer';
 import {Profile_Action} from '../redux/actions';
 import Header from '../components/Header';
 import FormInput from '../components/FormInput';
@@ -135,7 +137,20 @@ const ProfileScreen = ({navigation}) => {
     });
   };
   //*******************************Get Image*********************************************************/
-
+  const EditClick = () => {
+    navigation.navigate('Update_profile', {
+      username: userData.username,
+      email: userData.email,
+      mobile: mobileNum,
+      dateOfBirth: date,
+      id: userData._id,
+    });
+  };
+  const logout = () => {
+    AsyncStorage.clear();
+    persistor.purge();
+    navigation.navigate('Auth');
+  };
   return (
     <>
       <Loader loading={loading} />
@@ -144,6 +159,8 @@ const ProfileScreen = ({navigation}) => {
           headerTitle="Profile"
           iconType="menu"
           onPress={() => navigation.openDrawer()}
+          editIcon={true}
+          onEditPress={EditClick}
         />
       </View>
       {/****************************Profile******************************************************/}
@@ -154,17 +171,28 @@ const ProfileScreen = ({navigation}) => {
           showsVerticalScrollIndicator={true}>
           <KeyboardAvoidingView style={styles.container}>
             <View style={styles.inner}>
-              <TouchableOpacity>
-                {/* onPress={() => setModalVisible(true)}> */}
+              <View
+                style={{
+                  flexDirection: 'row',
+                }}>
+                <TouchableOpacity>
+                  {/* onPress={() => setModalVisible(true)}> */}
 
-                <Image
-                  source={require('../images/one.jpg')}
-                  style={styles.profileLogo}
-                />
-              </TouchableOpacity>
-              <Text style={styles.text}>Profile</Text>
+                  <Image
+                    source={require('../images/mal1.jpg')}
+                    style={styles.profileLogo}
+                  />
+                </TouchableOpacity>
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    marginHorizontal: 20,
+                  }}>
+                  <Text style={styles.text}>{userData.username}</Text>
+                </View>
+              </View>
               <View style={styles.fieldContainer}>
-                <View style={styles.fieldInside}>
+                {/* <View style={styles.fieldInside}>
                   <FormInput
                     labelValue={userData.username}
                     editable={false}
@@ -174,7 +202,7 @@ const ProfileScreen = ({navigation}) => {
                     autoCorrect={false}
                     inputVisible={true}
                   />
-                </View>
+                </View> */}
 
                 <View style={styles.fieldInside}>
                   <FormInput
@@ -207,19 +235,9 @@ const ProfileScreen = ({navigation}) => {
                     editable={false}
                   />
                 </View>
+
                 <View style={styles.formButton}>
-                  <FormButton
-                    buttonTitle="Update"
-                    onPress={() =>
-                      navigation.navigate('Update_profile', {
-                        username: userData.username,
-                        email: userData.email,
-                        mobile: mobileNum,
-                        dateOfBirth: date,
-                        id: userData._id,
-                      })
-                    }
-                  />
+                  <FormButton buttonTitle="Log Out" onPress={logout} />
                 </View>
               </View>
             </View>
@@ -234,13 +252,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   profileLogo: {
-    height: 120,
-    width: 120,
-    resizeMode: 'cover',
-    position: 'relative',
+    height: windowHeight / 7,
+    width: windowWidth / 3.5,
     borderRadius: 100,
     borderColor: '#000',
-    borderWidth: 2,
+    borderWidth: 1,
   },
   inner: {
     //backgroundColor: '#FFF',
@@ -256,6 +272,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   fieldContainer: {
+    marginVertical: 30,
     width: windowWidth / 1.09,
     height: windowHeight / 2,
   },

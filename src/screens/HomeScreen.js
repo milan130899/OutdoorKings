@@ -10,11 +10,9 @@ import {
   Dimensions,
   FlatList,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Carousel from 'react-native-snap-carousel';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useSelector, useDispatch} from 'react-redux';
-import {store, persistor} from '../redux/reducer';
 import {Token} from '../redux/actions';
 import {windowHeight, windowWidth} from '../utils/Dimentions';
 import Header from '../components/Header';
@@ -43,20 +41,10 @@ const DATA = [
 ];
 
 const HomeScreen = ({navigation}) => {
-  const [userDetails, setUserDetails] = useState([]);
   const dispatch = useDispatch();
-  const logout = () => {
-    AsyncStorage.clear();
-    setUserDetails([]);
-    persistor.purge();
-    navigation.navigate('Auth');
+  const profileClick = () => {
+    navigation.navigate('Profile');
   };
-
-  useEffect(() => {
-    AsyncStorage.getItem('user_details').then((value) => {
-      setUserDetails(JSON.parse(value));
-    });
-  }, []);
 
   const renderItem = ({item}) => {
     return (
@@ -76,8 +64,8 @@ const HomeScreen = ({navigation}) => {
           headerTitle="Home"
           iconType="menu"
           onPress={() => navigation.openDrawer()}
-          logoutIcon="logout"
-          onlogOutPress={logout}
+          personIcon={true}
+          onProfilePress={profileClick}
         />
       </View>
       <SafeAreaView style={{flex: 1}}>

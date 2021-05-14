@@ -16,10 +16,12 @@ import FormButton from './FormButton';
 
 const Headers = ({
   headerTitle,
-  logoutIcon,
+  personIcon,
   iconType,
   navigation,
-  onlogOutPress,
+  onProfilePress,
+  editIcon,
+  onEditPress,
   ...rest
 }) => {
   const RightIcon = () => {
@@ -34,37 +36,26 @@ const Headers = ({
   };
   const LeftIcon = () => {
     return (
+      <TouchableOpacity onPress={onProfilePress}>
+        <Image
+          source={require('../images/mal1.jpg')}
+          style={styles.rightIcon}
+        />
+      </TouchableOpacity>
+    );
+  };
+  const EditIcon = () => {
+    return (
       <Icon
         style={styles.passIcon}
-        name={logoutIcon}
+        name="edit"
         size={26}
-        onPress={onlogOutPress}
+        onPress={onEditPress}
         color="#FFF"
       />
     );
   };
   return (
-    // <View style={styles.container}>
-    //   <View>
-    //     <TouchableOpacity {...rest}>
-    //       <Image
-    //         source={require('../images/Menu.png')}
-    //         style={styles.iconStyle}
-    //       />
-    //     </TouchableOpacity>
-    //   </View>
-    //   <View style={styles.titleContainer}>
-    //     <Text style={styles.headerTitleStyle}>{headerTitle}</Text>
-    //   </View>
-    //   <View>
-    //     <FontAwesome
-    //       style={styles.passIcon}
-    //       name={logoutIcon}
-    //       size={33}
-    //       onPress={onlogOutPress}
-    //     />
-    //   </View>
-    // </View>
     <Header
       leftComponent={<RightIcon />}
       centerComponent={{
@@ -76,15 +67,13 @@ const Headers = ({
           marginTop: 5,
         },
       }}
-      rightComponent={<LeftIcon />}
+      rightComponent={
+        personIcon ? <LeftIcon /> : editIcon ? <EditIcon /> : null
+      }
     />
   );
 };
 const styles = StyleSheet.create({
-  headerTitleStyle: {
-    fontFamily: Fonts.MomcakeBold,
-    fontSize: 28,
-  },
   passIcon: {
     height: windowHeight / 22,
     width: windowWidth / 7.5,
@@ -96,20 +85,11 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 3,
   },
-  container: {
-    backgroundColor: '#F9F9F9',
-    height: windowHeight / 14,
-    width: windowWidth / 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  titleContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: windowWidth / 1.25,
-    height: windowHeight / 17,
-    //backgroundColor: '#000',
+  rightIcon: {
+    height: windowHeight / 30,
+    width: windowWidth / 15,
+    marginTop: 3,
+    borderRadius: 50,
   },
 });
 export default Headers;

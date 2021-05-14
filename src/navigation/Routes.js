@@ -68,7 +68,7 @@ const App = () => {
       }}>
       <DrawerApp.Screen
         name="Home"
-        component={HigherOrderComponent(HomeScreen)}
+        component={HomeStacks}
         options={{
           drawerIcon: ({focused}) => (
             <Icons
@@ -123,20 +123,6 @@ const App = () => {
         }}
       />
       <DrawerApp.Screen
-        name="Profile"
-        component={UpdateProfileStacks}
-        options={{
-          drawerIcon: ({focused, size}) => (
-            <Icons
-              name="user-md"
-              size={17}
-              color={focused ? '#7cc' : '#000'}
-              style={{marginRight: 16}}
-            />
-          ),
-        }}
-      />
-      <DrawerApp.Screen
         name="Orders"
         component={Payment}
         options={{
@@ -167,6 +153,21 @@ const App = () => {
     </DrawerApp.Navigator>
   );
 };
+const HomeStacks = () => {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Home" component={HigherOrderComponent(HomeScreen)} />
+      <Stack.Screen
+        name="Profile"
+        component={HigherOrderComponent(ProfileScreen)}
+      />
+      <Stack.Screen
+        name="Update_profile"
+        component={HigherOrderComponent(UpdateProfile)}
+      />
+    </Stack.Navigator>
+  );
+};
 const OrderStacks = () => {
   return (
     <OrderStack.Navigator screenOptions={{headerShown: false}}>
@@ -188,20 +189,6 @@ const OrderStacks = () => {
       />
       <OrderStack.Screen name="Success" component={OrderSuccess} />
     </OrderStack.Navigator>
-  );
-};
-const UpdateProfileStacks = () => {
-  return (
-    <PofileStack.Navigator screenOptions={{headerShown: false}}>
-      <PofileStack.Screen
-        name="Profile"
-        component={HigherOrderComponent(ProfileScreen)}
-      />
-      <PofileStack.Screen
-        name="Update_profile"
-        component={HigherOrderComponent(UpdateProfile)}
-      />
-    </PofileStack.Navigator>
   );
 };
 const Payment = () => {

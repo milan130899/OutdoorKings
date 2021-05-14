@@ -94,7 +94,7 @@ const UpdateProfile = ({route, navigation}) => {
       <Loader loading={loading} />
       <View>
         <Header
-          headerTitle="Update"
+          headerTitle="Profile"
           iconType="arrow-back"
           onPress={() => navigation.goBack()}
         />
@@ -177,10 +177,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   text: {
-    marginTop: 70,
+    marginTop: 20,
     fontWeight: '800',
     fontSize: 28,
-    marginVertical: 15,
+    //marginVertical: 15,
     color: '#051d5f',
   },
   fieldContainer: {

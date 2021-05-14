@@ -24,6 +24,7 @@ import OrderInput from '../../components/OrderInput';
 import Loader from '../../components/Loader';
 import {MAKE_ORDER} from '../../utils/urls';
 import {windowHeight, windowWidth} from '../../utils/Dimentions';
+import FormButton from '../../components/FormButton';
 const OrderDetails = ({navigation}) => {
   //Setting All Inputs
   const [firstName, setFirstName] = useState('');
@@ -42,7 +43,7 @@ const OrderDetails = ({navigation}) => {
   //***********************************************************************************/
   const [validation, setValidation] = useState(true);
   const [loading, setLoading] = useState(false);
-
+  const [successModel, setSuccessModel] = useState(false);
   const defaultScrollViewProps = {
     //  keyboardShouldPersistTaps: 'handled',
     contentContainerStyle: {
@@ -118,11 +119,7 @@ const OrderDetails = ({navigation}) => {
           setLoading(false);
           //console.log('Order Done==>', result);
           if (result.status == '200') {
-            Alert.alert(
-              'Order Placed!',
-              'Your Order Has Been Placed Successfully!!',
-            );
-            navigation.navigate('Success');
+            setSuccessModel(true);
           } else {
             ToastAndroid.show('Something went Wrong !', ToastAndroid.SHORT);
             console.log('Something went Wrong !');
@@ -245,6 +242,62 @@ const OrderDetails = ({navigation}) => {
   return (
     <>
       <Loader loading={loading} />
+      {/* Order confirm model */}
+      <Modal
+        transparent={true}
+        animationType={'fade'}
+        visible={successModel}
+        onRequestClose={() => {
+          setSuccessModel(!successModel);
+        }}>
+        <View style={styles.modalBackground}>
+          <View style={styles.containerWrapper}>
+            <Image
+              source={require('../../images/yesMark.png')}
+              style={styles.iconStyle}
+            />
+            <Text style={styles.thanksLine}>
+              Thank you for placing your order with us.{' '}
+            </Text>
+            <Text
+              style={{
+                ...styles.thanksLine,
+                fontWeight: 'normal',
+                fontSize: 19,
+                marginTop: 15,
+              }}>
+              You can view your order in{' '}
+              <Text
+                style={{
+                  ...styles.thanksLine,
+                  fontWeight: 'bold',
+                  fontSize: 17,
+                }}>
+                "Orders"
+              </Text>{' '}
+              sections.{' '}
+            </Text>
+            <View style={{marginTop: 20}}>
+              <FormButton
+                buttonTitle="Go To Orders"
+                onPress={() => {
+                  navigation.navigate('Orders');
+                  setSuccessModel(false);
+                }}
+              />
+            </View>
+            <View style={{marginTop: 30}}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('Home');
+                  setSuccessModel(false);
+                }}>
+                <Text style={{fontSize: 15}}>Go to Home!</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
       {/* *********Modal View************************** */}
       <Modal
         animationType="fade"
@@ -502,6 +555,36 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     borderWidth: 1.5,
     marginTop: 15,
+  },
+  //*****************Success Model***************************************** */
+  modalBackground: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    backgroundColor: '#00000040',
+  },
+  containerWrapper: {
+    backgroundColor: '#FFFFFF',
+    height: windowHeight / 2,
+    width: windowWidth / 1.1,
+    borderRadius: 28,
+    padding: 20,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  iconStyle: {
+    height: windowHeight / 10,
+    width: windowWidth / 5.5,
+    marginTop: 10,
+  },
+  thanksLine: {
+    fontSize: 22,
+    textAlign: 'center',
+    color: '#000',
+    fontWeight: 'bold',
+    marginTop: 8,
   },
 });
 export default OrderDetails;
